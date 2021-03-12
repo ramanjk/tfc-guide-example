@@ -4,7 +4,7 @@ variable "aws_region" {
 }
 variable "instance_name" {
   type    = string
-  default = "Tf-vcsupdate"
+  default = "Tf-vcsupdate-PR"
 }
 
 
