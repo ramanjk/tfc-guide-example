@@ -2,19 +2,14 @@ provider "aws" {
   region = var.aws_region
 }
 
-provider "random" {}
+resource "aws_instance" "tf1" {
+  #ami           = "ami-038f1ca1bd58a5790"
+  ami           = "ami-042e8287309f5df03"
+  instance_type = "t2.micro"
 
-resource "random_pet" "table_name" {}
-
-resource "aws_dynamodb_table" "tfc_example_table" {
-  name = "${var.db_table_name}-${random_pet.table_name.id}"
-
-  read_capacity  = var.db_read_capacity
-  write_capacity = var.db_write_capacity
-  hash_key       = "UUID"
-
-  attribute {
-    name = "UUID"
-    type = "S"
+  tags = {
+   # Name = "TF-Test1"
+     Name = var.instance_name
   }
 }
+
